@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invoice GA-3804 – Grip Active</title>
+  <style>
+    :root{
+      --brand:#1d5dbf;        /* blue for headings */
+      --accent:#3c8af4;       /* lighter blue */
+      --ink:#1a1a1a;          /* body text */
+      --muted:#6b7280;        /* subtle gray */
+      --panel:#f8fafc;        /* light background */
+      --line:#e5e7eb;         /* borders */
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font: 14px/1.5 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:#fff;
+    }
+
+    /* Page frame */
+    .a4{
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 18mm 16mm;
+      background: #fff;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      position: relative;
+    }
+
+    header{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items:center;
+      border-bottom: 4px solid var(--brand);
+      padding-bottom: 14px;
+    }
+
+    .logo{
+      display:flex; align-items:center; gap:14px;
+    }
+    .logo-mark{
+      width: 160px; height: 44px; border-radius:8px; border:2px solid var(--brand);
+      display:grid; place-items:center; font-weight:800; color:var(--brand);
+      letter-spacing:.5px; text-transform:uppercase;
+    }
+    .doc-title{
+      text-align:right;
+    }
+    .doc-title h1{
+      margin:0; font-size:44px; letter-spacing:1px; color:var(--accent);
+    }
+
+    /* Meta row */
+    .meta{
+      display:grid; grid-template-columns: 1fr auto; gap: 12px; margin-top: 10px;
+    }
+    .issuer{
+      font-size:12.5px; color:#111;
+    }
+    .issuer strong{ display:block; font-size:13.5px; margin-bottom:4px; }
+
+    .meta-cells{
+      display:grid; grid-auto-flow:column; gap:22px; align-items:start; justify-content:end;
+      font-size:12.5px; text-align:right;
+    }
+    .meta-cells div span{ color:var(--muted); display:block; font-size:12px; }
+
+    .notice{
+      margin: 14px 0 10px; text-align:center; font-weight:700; color:#c53030;
+      letter-spacing:.2px;
+    }
+
+    /* Two-up addresses */
+    .section-title{
+      background: var(--brand); color:#fff; padding:8px 10px; font-weight:700; border-radius:6px 6px 0 0;
+      font-size:13px; letter-spacing:.3px;
+    }
+    .panel{
+      border: 1px solid var(--line); border-top:0; padding:12px; border-radius:0 0 10px 10px; background:var(--panel);
+    }
+
+    .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+    .card{ border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff; }
+
+    .org{ display:grid; grid-template-columns: 56px 1fr; gap:12px; align-items:center; }
+    .badge{
+      width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg, #ffcc00, #1a8f2d);
+      box-shadow: inset 0 0 0 3px #fff, 0 2px 6px rgba(0,0,0,.15);
+    }
+    .org h3{ margin:0; font-size:15px; }
+
+    .addr{ margin-top:8px; font-size:12.5px; color:#111; line-height:1.55; }
+    .addr a{ color:var(--brand); text-decoration:none; }
+
+    /* Items table */
+    table{ width:100%; border-collapse:collapse; }
+    .items{ margin-top:16px; }
+    .items thead th{
+      background:#e9f2ff; color:#0f3d91; font-weight:700; text-transform:none; letter-spacing:.2px;
+      padding:10px; border:1px solid var(--line); font-size:13px;
+    }
+    .items tbody td{
+      padding:10px; border:1px solid var(--line); vertical-align:top; font-size:13px;
+    }
+    .items tbody tr:nth-child(even) td{ background:#fafafa; }
+    .qty, .price, .amount{ text-align:right; white-space:nowrap; }
+
+    /* Totals */
+    .totals-wrap{
+      display:grid; grid-template-columns: 1fr 260px; gap: 16px; margin-top: 16px;
+    }
+    .totals{
+      border:1px solid var(--line); border-radius:12px; overflow:hidden; background:#fff;
+    }
+    .totals table{ width:100%; }
+    .totals td{ padding:10px 12px; border-bottom:1px dashed var(--line); font-size:13px; }
+    .totals td:last-child{ text-align:right; }
+    .totals tr:last-child td{ border-bottom:0; font-weight:800; font-size:14px; background:#f3f6fb; }
+
+    /* Payment */
+    .payment{
+      border:1px solid var(--line); border-radius:12px; padding:12px; background:#fff; font-size:12.5px;
+    }
+    .payment h4{ margin:0 0 8px; font-size:13.5px; }
+    .muted{ color:var(--muted); font-size:12px; }
+
+    /* Footer */
+    footer{
+      display:flex; justify-content:space-between; gap:16px; align-items:flex-end; margin-top: 20px; font-size:12.5px; color:#0f172a;
+    }
+    footer .contact strong{ display:block; font-size:13px; }
+
+    /* Print */
+    @media print{
+      body{ background:#fff; }
+      .a4{ box-shadow:none; margin:0; width:auto; min-height:auto; padding:0; }
+      header{ border-color:#1f2937; }
+      .notice{ color:#b91c1c; }
+    }
+
+    /* Responsive (mobile preview) */
+    @media (max-width:900px){
+      .a4{ width:auto; min-height:auto; padding:24px 16px; }
+      .grid-2{ grid-template-columns:1fr; }
+      .totals-wrap{ grid-template-columns: 1fr; }
+      .doc-title h1{ font-size:36px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="a4" role="document" aria-label="Invoice">
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <div class="logo-mark" aria-label="Company Logo">GripActive</div>
+      </div>
+      <div class="doc-title">
+        <h1>INVOICE</h1>
+      </div>
+    </header>
+
+    <!-- Meta / Issuer -->
+    <section class="meta" aria-label="Issuer & Meta">
+      <div class="issuer">
+        <strong>Grip Active Limited</strong>
+        CEME Campus Marsh Way, London, RM13 8EU, United Kingdom<br>
+        VAT: GB 315 328 521
+      </div>
+      <div class="meta-cells">
+        <div><span>Date</span>23-08-2025</div>
+        <div><span>Invoice / Reference #</span>GA-3804</div>
+        <div><span>Terms</span>Advance Payment</div>
+      </div>
+    </section>
+
+    <p class="notice">PLEASE READ DECLARATION BEFORE CONFIRMING YOUR ORDER</p>
+
+    <!-- Bill To & Delivery -->
+    <section class="grid-2" aria-label="Addresses">
+      <div class="card">
+        <div class="section-title">Bill To:</div>
+        <div class="panel">
+          <div class="org">
+            <div class="badge" aria-hidden="true"></div>
+            <h3>Aylesbury Football Academy</h3>
+          </div>
+          <div class="addr">
+            <strong>Luke Sellar</strong><br>
+            20 Kestrel Way, Aylesbury, Bucks, HP19 0GH, United Kingdom<br>
+            <a href="mailto:aylesburyfootballacademy@gmail.com">aylesburyfootballacademy@gmail.com</a><br>
+            07825502639
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-title">Delivery Address:</div>
+        <div class="panel">
+          <div class="org">
+            <div class="badge" aria-hidden="true"></div>
+            <h3>Aylesbury Football Academy</h3>
+          </div>
+          <div class="addr">
+            <strong>Luke Sellar</strong><br>
+            20 Kestrel Way, Aylesbury, Bucks, HP19 0GH, United Kingdom<br>
+            <a href="mailto:aylesburyfootballacademy@gmail.com">aylesburyfootballacademy@gmail.com</a><br>
+            07825502639
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Items -->
+    <section class="items" aria-label="Line Items">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:80px; text-align:right;">Quantity</th>
+            <th>Description</th>
+            <th class="price" style="width:120px;">Unit price</th>
+            <th class="amount" style="width:140px;">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="qty">15</td>
+            <td>1/4 Zip Midlayer Youth</td>
+            <td class="price">£35.00</td>
+            <td class="amount">£525.00</td>
+          </tr>
+          <tr>
+            <td class="qty">4</td>
+            <td>1/4 Zip Midlayer Adult</td>
+            <td class="price">£33.33</td>
+            <td class="amount">£133.33</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Totals & Payment -->
+    <section class="totals-wrap">
+      <div class="payment">
+        <h4>BACS Payment:</h4>
+        <div>
+          Grip Active Limited<br>
+          Account Number: 35913568<br>
+          Sort Code: 30-97-90<br>
+          IBAN: GB49LOYD30979035913568<br>
+          SWIFT/BIC: LOYDGB2L351<br>
+          Lloyds Bank
+        </div>
+        <div class="muted" style="margin-top:8px;">PayPal – gripactive@gmail.com (3.5% transfer fee applicable)</div>
+        <div class="muted" style="margin-top:10px;"><strong>Please Note:</strong> Use invoice number as a <strong>REFERENCE</strong> when making payment, otherwise <em>payment may not be authorised</em>.</div>
+      </div>
+      <div class="totals" aria-label="Totals">
+        <table>
+          <tr>
+            <td>Sub Total</td>
+            <td>£658.33</td>
+          </tr>
+          <tr>
+            <td>Delivery</td>
+            <td>£20.00</td>
+          </tr>
+          <tr>
+            <td>Vat</td>
+            <td>£30.67</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>£709.00</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <div class="muted">For any queries please contact:<br><strong>accounts@gripactive.com</strong></div>
+      <div class="contact">Phone No: <strong>07880580030</strong></div>
+    </footer>
+  </main>
+
+  <!-- Small helper: quick print & export -->
+  <div style="max-width:210mm; margin: 16px auto; text-align:center;">
+    <button onclick="window.print()" style="padding:10px 14px; border:1px solid var(--line); border-radius:10px; background:#111827; color:#fff; cursor:pointer;">Print / Save as PDF</button>
+  </div>
+</body>
+</html>
